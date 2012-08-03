@@ -25,10 +25,11 @@ import httplib
 import socket
 import errno
 try:
-    import cjson as json
+    import cjson
+    json = cjson
     json.dumps = cjson.encode
     json.loads = cjson.decode
-except ImportError
+except ImportError:
     try:
         import json
     except ImportError:

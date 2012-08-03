@@ -19,9 +19,19 @@ under the License.
 """
 # Use json as first choice, simplejson as second choice.
 try:
-    import json
+    import cjson
+    json = cjson
+    json.dumps = cjson.encode
+    json.loads = cjson.decode
 except ImportError:
-    import simplejson as json
+    try:
+        import json
+    except ImportError:
+        import simplejson as json
+# try:
+#     import json
+# except ImportError:
+#     import simplejson as json
 
 from riak.bucket import RiakBucket
 from riak.mapreduce import RiakMapReduce
