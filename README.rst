@@ -1,3 +1,9 @@
+=======================
+changes:
+======================
+replace json module with cjson to speedy.
+
+
 ========================
 Python Client for Riak
 ========================

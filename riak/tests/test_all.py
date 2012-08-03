@@ -4,9 +4,14 @@ from __future__ import with_statement
 import copy
 import cPickle
 try:
-    import json
-except ImportError:
-    import simplejson as json
+    import cjson as json
+    json.dumps = cjson.encode
+    json.loads = cjson.decode
+except ImportError
+    try:
+        import json
+    except ImportError:
+        import simplejson as json
 import os
 import random
 import socket

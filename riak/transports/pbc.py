@@ -22,11 +22,19 @@ from __future__ import with_statement
 import errno
 import socket
 import struct
-
 try:
-    import json
-except ImportError:
-    import simplejson as json
+    import cjson as json
+    json.dumps = cjson.encode
+    json.loads = cjson.decode
+except ImportError
+    try:
+        import json
+    except ImportError:
+        import simplejson as json
+# try:
+#     import json
+# except ImportError:
+#     import simplejson as json
 
 from riak import RiakError
 from riak.mapreduce import RiakLink

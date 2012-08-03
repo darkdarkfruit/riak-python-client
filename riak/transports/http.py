@@ -25,9 +25,18 @@ import httplib
 import socket
 import errno
 try:
-    import json
-except ImportError:
-    import simplejson as json
+    import cjson as json
+    json.dumps = cjson.encode
+    json.loads = cjson.decode
+except ImportError
+    try:
+        import json
+    except ImportError:
+        import simplejson as json
+# try:
+#     import json
+# except ImportError:
+#     import simplejson as json
 
 from transport import RiakTransport
 from riak.metadata import *
